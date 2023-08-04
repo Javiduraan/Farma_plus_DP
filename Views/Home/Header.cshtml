@@ -1,0 +1,454 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+
+@model Farma_plus.Models.Reports.Header
+@{
+    Layout = null;
+    ViewBag.Title = "Encabezado";
+    var url = string.Format("{0}://{1}{2}", Context.Request.Scheme, Url.ActionContext.HttpContext.Request.Host.Value, Url.Content("~"));
+    string nomCompletoAfiliado = $"{Model.ApellidoPaterno} {Model.ApellidoMaterno} {Model.NombreDH}";
+    string numAfiliacion = $"{Model.NumeroAfiliacion}/{Model.Parentesco}";
+}
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="@(url)/img/favicon.png">
+    <style>
+        font-face {
+            font-family: "Libre Barcode 128";
+            src: url('@(url)/fonts/LibreBarcode128/LibreBarcode128-Regular.eot'), url('@(url)/fonts/LibreBarcode128/LibreBarcode128-Regular.eot?#iefix') format('embedded-opentype'), url('@(url)/fonts/LibreBarcode128/LibreBarcode128-Regular.ttf') format('truetype'), url('@(url)/fonts/LibreBarcode128/LibreBarcode128-Regular.woff2') format('woff2'), url('@(url)/fonts/LibreBarcode128/LibreBarcode128-Regular.woff') format('woff'), url('@(url)/fonts/LibreBarcode128/LibreBarcode128-Regular.svg#LibreBarcode128-Regular') format('svg');
+            font-style: normal;
+            font-weight: 400;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        html {
+            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 1px;
+            line-height: 1.5;
+            color: #000000;
+            min-width: 1020px;
+            width: 1020px;
+            max-width: 1020px;
+        }
+
+        body {
+            min-width: 1020px;
+            width: 1020px;
+            max-width: 1020px;
+            padding: 0;
+            margin: 0;
+            /*font-size: 14.66rem;*/
+            font-size: 13rem;
+            font-weight: 400;
+        }
+
+        table {
+            table-layout: fixed;
+            margin-top: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+            border-spacing: 0;
+            /*border-collapse: collapse;*/
+            text-align: left;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        td, th {
+            border-spacing: 0;
+            /*border-collapse: collapse;*/
+        }
+
+        table td, table th {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        table table td, table table th {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        th[colspan="1"], td[colspan="1"] {
+            width: calc(100% / 24) !important;
+        }
+
+        th[colspan="2"], td[colspan="2"] {
+            width: calc(100% / 24 * 2) !important;
+        }
+
+        th[colspan="3"], td[colspan="3"] {
+            width: calc(100% / 24 * 3) !important;
+        }
+
+        th[colspan="4"], td[colspan="4"] {
+            width: calc(100% / 24 * 4) !important;
+        }
+
+        th[colspan="5"], td[colspan="5"] {
+            width: calc(100% / 24 * 5) !important;
+        }
+
+        th[colspan="6"], td[colspan="6"] {
+            width: calc(100% / 24 * 6) !important;
+        }
+
+        th[colspan="7"], td[colspan="7"] {
+            width: calc(100% / 24 * 7) !important;
+        }
+
+        th[colspan="8"], td[colspan="8"] {
+            width: calc(100% / 24 * 8) !important;
+        }
+
+        th[colspan="9"], td[colspan="9"] {
+            width: calc(100% / 24 * 9) !important;
+        }
+
+        th[colspan="10"], td[colspan="10"] {
+            width: calc(100% / 24 * 10) !important;
+        }
+
+        th[colspan="11"], td[colspan="11"] {
+            width: calc(100% / 24 * 11) !important;
+        }
+
+        th[colspan="12"], td[colspan="12"] {
+            width: calc(100% / 24 * 12) !important;
+        }
+
+        th[colspan="13"], td[colspan="13"] {
+            width: calc(100% / 24 * 13) !important;
+        }
+
+        th[colspan="14"], td[colspan="14"] {
+            width: calc(100% / 24 * 14) !important;
+        }
+
+        th[colspan="15"], td[colspan="15"] {
+            width: calc(100% / 24 * 15) !important;
+        }
+
+        th[colspan="16"], td[colspan="16"] {
+            width: calc(100% / 24 * 16) !important;
+        }
+
+        th[colspan="17"], td[colspan="17"] {
+            width: calc(100% / 24 * 17) !important;
+        }
+
+        th[colspan="18"], td[colspan="18"] {
+            width: calc(100% / 24 * 18) !important;
+        }
+
+        th[colspan="19"], td[colspan="19"] {
+            width: calc(100% / 24 * 19) !important;
+        }
+
+        th[colspan="20"], td[colspan="20"] {
+            width: calc(100% / 24 * 20) !important;
+        }
+
+        th[colspan="21"], td[colspan="21"] {
+            width: calc(100% / 24 * 21) !important;
+        }
+
+        th[colspan="22"], td[colspan="22"] {
+            width: calc(100% / 24 * 22) !important;
+        }
+
+        th[colspan="23"], td[colspan="23"] {
+            width: calc(100% / 24 * 23) !important;
+        }
+
+        th[colspan="24"], td[colspan="24"] {
+            width: 100% !important;
+        }
+
+        .text-left {
+            text-align: left !important;
+        }
+
+        .text-right {
+            text-align: right !important;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .text-justify {
+            text-align: justify !important;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .ff-code128 {
+            display: inline-block;
+            font-family: "Libre Barcode 128", cursive;
+            font-style: normal;
+            font-weight: normal !important;
+            font-size: 53rem;
+            height: 35px;
+            margin-top: -12px;
+        }
+
+            .ff-code128 + div {
+                margin-top: 0px;
+                letter-spacing: 6.5rem;
+                font-size: 11rem;
+                margin-top: 4px;
+            }
+
+        .fs-1 {
+            font-size: 1rem;
+        }
+
+        .fs-2 {
+            font-size: 3rem;
+        }
+
+        .fs-3 {
+            font-size: 4rem;
+        }
+
+        .fs-4 {
+            font-size: 5rem;
+        }
+
+        .fs-5 {
+            font-size: 7rem;
+        }
+
+        .fs-6 {
+            font-size: 8rem;
+        }
+
+        .fs-7 {
+            font-size: 9rem;
+        }
+
+        .fs-8 {
+            font-size: 11rem;
+        }
+
+        .fs-9 {
+            font-size: 12rem;
+        }
+
+        .fs-10 {
+            font-size: 13rem;
+        }
+
+        .fs-11 {
+            font-size: 15rem;
+        }
+
+        .fs-12 {
+            font-size: 16rem;
+        }
+
+        .fs-19 {
+            font-size: 20rem;
+        }
+
+        .fs-20 {
+            font-size: 27rem;
+        }
+
+        .fw-lighter {
+            font-weight: lighter;
+        }
+
+        .lh-1 {
+            line-height: 1;
+        }
+
+        .b-top, .b-top-left, .b-top-right, .b-top-bottom {
+            border-spacing: 0;
+            border-top: 2px solid #b0b0b0;
+        }
+
+        .b-left, .b-top-left, .b-bottom-left {
+            border-spacing: 0;
+            border-left: 2px solid #b0b0b0;
+        }
+
+        .b-right, .b-top-right, .b-bottom-right {
+            border-spacing: 0;
+            border-right: 2px solid #b0b0b0;
+        }
+
+        .b-bottom, .b-top-left, .b-top-right, .b-bottom-left, .b-bottom-right, .b-top-bottom {
+            border-spacing: 0;
+            border-bottom: 2px solid #b0b0b0;
+        }
+
+        .border {
+            border-spacing: 0;
+            border: 2px solid #b0b0b0;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .word-break {
+            word-break: break-all;
+        }
+
+        .valign-top {
+            vertical-align: top;
+        }
+
+        .valign-middle {
+            vertical-align: middle;
+        }
+
+        .valign-bottom {
+            vertical-align: bottom;
+        }
+
+        .marca_agua {
+            width: 1020px;
+            height: 1334px;
+            display: block;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: url("@(url)/img/SEAASplusMA.png");
+            background-size: 60%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            opacity: 0.05;
+            clear: both;
+            position: absolute;
+        }
+
+        .marca_agua_leyenda {
+            width: 1020px;
+            height: 1334px;
+            display: block;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 0;
+            clear: both;
+            position: absolute;
+            opacity: 1;
+            text-align: center;
+            padding-top: 45%;
+        }
+
+        .bg-text {
+            color: grey;
+            font-size: 73rem;
+            font-weight: 600;
+            opacity: 0.1;
+            line-height: 0.8;
+        }
+    </style>
+    <script>
+        function subst() {
+            var body = document.getElementsByTagName("body")[0];
+            var img = document.createElement("div");
+            img.classList.add("marca_agua");
+            body.appendChild(img);
+        }
+    </script>
+</head>
+<body onload="subst();">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+            </tr>
+            <tr>
+                <th colspan="6">
+                    <img src="@(url)/img/PCE Gris.jpg" title="" alt="" />
+                </th>
+                <th class="text-center" colspan="12">
+                    <span class="fs-19 fw-lighter lh-1"><b>PENSIONES CIVILES DEL ESTADO DE CHIHUAHUA</b></span>
+                    <br />
+                    <span class="fs-9 fw-lighter lh-1"><b>AVE. TEOFILO BORUNDA ORTIZ No. 2900 TEL.429-13-30</b></span>
+                    <br />
+                    <span class="fs-9 fw-lighter lh-1"><b>C.P. 31000 CHIHUAHUA, CHIH. REG. FED. DE CONT. PCE-811216-FC3</b></span>
+                </th>
+                <th colspan="1">&nbsp;</th>
+            </tr>
+            <tr>
+                <th colspan="24"><hr /></th>
+            </tr>
+            <tr>
+                <th colspan="10" class="b-top-left text-left">
+                    <span class="fs-10 fw-lighter lh-1"><b>@Model.NombreProveedor</b></span>
+                    <br />
+                    <span class="fs-7 fw-lighter lh-1"><b>@Model.DireccionProveedor</b></span>
+                </th>
+                <th colspan="10" class="b-top-right"></th>
+                <th colspan="4" class="b-top-right text-center">ORDEN DE COMPRA</th>
+            </tr>
+            <tr>
+                <td colspan="10" class="b-bottom-left text-left">&nbsp;&nbsp;&nbsp;@nomCompletoAfiliado</td>
+                <td colspan="10" class="b-bottom-right"></td>
+                <td colspan="4" class="b-bottom-right text-center"></td>
+            </tr>
+            <tr>
+                <td colspan="23" class="b-bottom-left text-left" style="background-color: grey;"><b>DATOS DEL DERECHOHABIENTE</b></td>
+                <td colspan="1" class="b-bottom-right" style="background-color: grey;"></td>
+                <!-- <td colspan="10" class="b-bottom-left text-left"><b>Edad:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edad</td>
+                <th colspan="2" class="b-bottom text-left">Teléfono:</th>
+                <td colspan="2" class="b-bottom">Telefono</td>
+                <th colspan="2" class="b-bottom">Espec.:</th>
+                <td colspan="8" class="b-bottom-right">Especialidad</td> -->
+            </tr>
+            <tr>
+                <td colspan="6" class="b-bottom-left text-left"><b>No. De Afiliacion:</b>&nbsp;&nbsp;&nbsp; <b>@numAfiliacion</b></td>
+                <td colspan="6" class="b-bottom text-left"><b>Clave del Médico:</b>&nbsp;&nbsp;&nbsp; <b>@Model.ClaveMedico</b></td>
+                <td colspan="6" class="b-bottom text-left"></td>
+                <td colspan="6" class="b-bottom-right text-left"><b>Folio Receta:</b>&nbsp;&nbsp;&nbsp; <b>@Model.FolioReceta</b></td>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>

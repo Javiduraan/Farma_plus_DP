@@ -1,0 +1,218 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.7.0",
+      "destination": "wwwroot/libs/jquery",
+      "files": [
+        "jquery.min.js",
+        "jquery.min.map"
+      ]
+    },
+    {
+      "library": "jquery-migrate@3.4.1",
+      "destination": "wwwroot/libs/jquery-migrate",
+      "files": [
+        "jquery-migrate.min.js",
+        "jquery-migrate.min.map"
+      ]
+    },
+    {
+      "library": "jquery-validate@1.19.5",
+      "destination": "wwwroot/libs/jquery-validate",
+      "files": [
+        "jquery.validate.min.js",
+        "additional-methods.min.js",
+        "localization/messages_es.min.js"
+      ]
+    },
+    {
+      "library": "jquery-validation-unobtrusive@4.0.0",
+      "destination": "wwwroot/libs/jquery-validation-unobtrusive",
+      "files": [ "jquery.validate.unobtrusive.min.js" ]
+    },
+    {
+      "library": "bootstrap@5.3.0",
+      "destination": "wwwroot/libs/bootstrap",
+      "files": [
+        "css/bootstrap.min.css",
+        "css/bootstrap.min.css.map",
+        "js/bootstrap.bundle.min.js",
+        "js/bootstrap.bundle.min.js.map"
+      ]
+    },
+    {
+      "library": "perfect-scrollbar@1.5.5",
+      "destination": "wwwroot/libs/perfect-scrollbar",
+      "files": [
+        "css/perfect-scrollbar.min.css",
+        "perfect-scrollbar.min.js"
+      ]
+    },
+    {
+      "library": "smooth-scrollbar@8.8.4",
+      "destination": "wwwroot/libs/smooth-scrollbar",
+      "files": [ "smooth-scrollbar.min.js" ]
+    },
+    {
+      "library": "dragula@3.7.3",
+      "destination": "wwwroot/libs/dragula",
+      "files": [
+        "dragula.min.css",
+        "dragula.min.js"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "jkanban@1.3.1",
+      "destination": "wwwroot/libs/jkanban",
+      "files": [
+        "dist/jkanban.min.css",
+        "dist/jkanban.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net@1.13.5",
+      "destination": "wwwroot/libs/datatables.net",
+      "files": [ "jquery.dataTables.min.js" ]
+    },
+    {
+      "library": "datatables.net-bs5@1.13.5",
+      "destination": "wwwroot/libs/datatables.net",
+      "files": [
+        "dataTables.bootstrap5.min.css",
+        "dataTables.bootstrap5.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-dt@1.13.5",
+      "destination": "wwwroot/libs/datatables.net",
+      "files": [
+        "css/jquery.dataTables.min.css"
+      ]
+    },
+    {
+      "library": "datatables.net-keytable@2.10.0",
+      "destination": "wwwroot/libs/datatables.net",
+      "files": [
+        "dataTables.keyTable.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-keytable-dt@2.10.0",
+      "destination": "wwwroot/libs/datatables.net",
+      "files": [
+        "keyTable.dataTables.min.css",
+        "keyTable.dataTables.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-keytable-bs5@2.10.0",
+      "destination": "wwwroot/libs/datatables.net",
+      "files": [
+        "keyTable.bootstrap5.min.css",
+        "keyTable.bootstrap5.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-responsive@2.5.0",
+      "destination": "wwwroot/libs/datatables.net",
+      "files": [
+        "dataTables.responsive.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-responsive-bs5@2.5.0",
+      "destination": "wwwroot/libs/datatables.net",
+      "files": [
+        "responsive.bootstrap5.min.css",
+        "responsive.bootstrap5.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-responsive-dt@2.5.0",
+      "destination": "wwwroot/libs/datatables.net",
+      "files": [
+        "responsive.dataTables.min.css"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "simple-datatables@7.3.0",
+      "destination": "wwwroot/libs/simple-datatables",
+      "files": [
+        "dist/style.min.css",
+        "dist/umd/simple-datatables.min.js"
+      ]
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/libs/sweetalert",
+      "files": [ "sweetalert.min.js" ]
+    },
+    {
+      "library": "moment.js@2.29.4",
+      "destination": "wwwroot/libs/moment.js",
+      "files": [
+        "moment-with-locales.min.js",
+        "moment-with-locales.min.js.map"
+      ]
+    },
+    {
+      "library": "jstree@3.3.15",
+      "destination": "wwwroot/libs/jstree",
+      "files": [
+        "themes/default/style.min.css",
+        "jstree.min.js",
+        "themes/default/32px.png"
+      ]
+    },
+    {
+      "library": "jqueryui@1.13.2",
+      "destination": "wwwroot/libs/jqueryui",
+      "files": [
+        "themes/base/jquery-ui.min.css",
+        "jquery-ui.min.js"
+      ]
+    },
+    {
+      "library": "jquery.mask@1.14.16",
+      "destination": "wwwroot/libs/jquery.mask",
+      "files": [ "jquery.mask.min.js" ]
+    },
+    {
+      "library": "select2@4.1.0-rc.0",
+      "destination": "wwwroot/libs/select2",
+      "files": [
+        "css/select2.min.css",
+        "js/i18n/es.min.js",
+        "js/select2.full.min.js"
+      ]
+    },
+    {
+      "library": "select2-bootstrap-5-theme@1.3.0",
+      "destination": "wwwroot/libs/select2/css/",
+      "files": [
+        "select2-bootstrap-5-theme.min.css"
+      ]
+    },
+    {
+      "library": "bootstrap-datetimepicker@4.17.47",
+      "destination": "wwwroot/libs/bootstrap-datetimepicker",
+      "files": [
+        "css/bootstrap-datetimepicker-standalone.min.css",
+        "css/bootstrap-datetimepicker-standalone.min.css.map",
+        "js/bootstrap-datetimepicker.min.js"
+      ]
+    },
+    {
+      "library": "Chart.js@4.3.0",
+      "destination": "wwwroot/libs/Chart.js",
+      "files": [
+        "chart.umd.min.js",
+        "chart.umd.js.map"
+      ]
+    }
+  ]
+}

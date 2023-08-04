@@ -1,0 +1,382 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+
+@model Farma_plus.Models.Reports.Footer
+@{
+    Layout = null;
+    ViewBag.Title = "Pie de Pagina ";
+    var url = string.Format("{0}://{1}{2}", Context.Request.Scheme, Url.ActionContext.HttpContext.Request.Host.Value, Url.Content("~"));
+    string todayShortDate = DateTime.Now.ToShortDateString();
+}
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="@(url)/img/favicon.png">
+    <style>
+        html {
+            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 1px;
+            line-height: 1.5;
+            color: #000000;
+            min-width: 1020px;
+            width: 1020px;
+            max-width: 1020px;
+        }
+
+        body {
+            min-width: 1020px;
+            width: 1020px;
+            max-width: 1020px;
+            padding: 0;
+            margin: 0;
+            font-size: 13rem;
+            font-weight: 400;
+        }
+
+        table {
+            table-layout: fixed;
+            margin-top: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+            border-spacing: 0;
+            /*border-collapse: collapse;*/
+            text-align: left;
+        }
+
+        td, th {
+            border-spacing: 0;
+            /*border-collapse: collapse;*/
+        }
+
+        table td, table th {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        th[colspan="1"], td[colspan="1"] {
+            width: calc(100% / 24) !important;
+        }
+
+        th[colspan="2"], td[colspan="2"] {
+            width: calc(100% / 24 * 2) !important;
+        }
+
+        th[colspan="3"], td[colspan="3"] {
+            width: calc(100% / 24 * 3) !important;
+        }
+
+        th[colspan="4"], td[colspan="4"] {
+            width: calc(100% / 24 * 4) !important;
+        }
+
+        th[colspan="5"], td[colspan="5"] {
+            width: calc(100% / 24 * 5) !important;
+        }
+
+        th[colspan="6"], td[colspan="6"] {
+            width: calc(100% / 24 * 6) !important;
+        }
+
+        th[colspan="7"], td[colspan="7"] {
+            width: calc(100% / 24 * 7) !important;
+        }
+
+        th[colspan="8"], td[colspan="8"] {
+            width: calc(100% / 24 * 8) !important;
+        }
+
+        th[colspan="9"], td[colspan="9"] {
+            width: calc(100% / 24 * 9) !important;
+        }
+
+        th[colspan="10"], td[colspan="10"] {
+            width: calc(100% / 24 * 10) !important;
+        }
+
+        th[colspan="11"], td[colspan="11"] {
+            width: calc(100% / 24 * 11) !important;
+        }
+
+        th[colspan="12"], td[colspan="12"] {
+            width: calc(100% / 24 * 12) !important;
+        }
+
+        th[colspan="13"], td[colspan="13"] {
+            width: calc(100% / 24 * 13) !important;
+        }
+
+        th[colspan="14"], td[colspan="14"] {
+            width: calc(100% / 24 * 14) !important;
+        }
+
+        th[colspan="15"], td[colspan="15"] {
+            width: calc(100% / 24 * 15) !important;
+        }
+
+        th[colspan="16"], td[colspan="16"] {
+            width: calc(100% / 24 * 16) !important;
+        }
+
+        th[colspan="17"], td[colspan="17"] {
+            width: calc(100% / 24 * 17) !important;
+        }
+
+        th[colspan="18"], td[colspan="18"] {
+            width: calc(100% / 24 * 18) !important;
+        }
+
+        th[colspan="19"], td[colspan="19"] {
+            width: calc(100% / 24 * 19) !important;
+        }
+
+        th[colspan="20"], td[colspan="20"] {
+            width: calc(100% / 24 * 20) !important;
+        }
+
+        th[colspan="21"], td[colspan="21"] {
+            width: calc(100% / 24 * 21) !important;
+        }
+
+        th[colspan="22"], td[colspan="22"] {
+            width: calc(100% / 24 * 22) !important;
+        }
+
+        th[colspan="23"], td[colspan="23"] {
+            width: calc(100% / 24 * 23) !important;
+        }
+
+        th[colspan="24"], td[colspan="24"] {
+            width: 100% !important;
+        }
+
+        .text-left {
+            text-align: left !important;
+        }
+
+        .text-right {
+            text-align: right !important;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .text-justify {
+            text-align: justify !important;
+        }
+
+        tbody * {
+            vertical-align: top;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .fs-1 {
+            font-size: 1rem;
+        }
+
+        .fs-2 {
+            font-size: 3rem;
+        }
+
+        .fs-3 {
+            font-size: 4rem;
+        }
+
+        .fs-4 {
+            font-size: 5rem;
+        }
+
+        .fs-5 {
+            font-size: 7rem;
+        }
+
+        .fs-6 {
+            font-size: 8rem;
+        }
+
+        .fs-7 {
+            font-size: 9rem;
+        }
+
+        .fs-8 {
+            font-size: 11rem;
+        }
+
+        .fs-9 {
+            font-size: 12rem;
+        }
+
+        .fs-10 {
+            font-size: 13rem;
+        }
+
+        .fs-11 {
+            font-size: 15rem;
+        }
+
+        .fs-12 {
+            font-size: 16rem;
+        }
+
+        .fs-20 {
+            font-size: 27rem;
+        }
+
+        .fw-lighter {
+            font-weight: lighter;
+        }
+
+        .lh-1 {
+            line-height: 1;
+        }
+
+        .datos {
+            background-color: #ebebeb;
+        }
+
+        .b-bottom {
+            border-bottom: 2px solid #b0b0b0;
+        }
+
+        .b-foot-top {
+            border-top: 1px solid #b0b0b0;
+        }
+
+        .b-foot-bottom {
+            border-bottom: 1px solid #b0b0b0;
+        }
+
+        .b-foot-left {
+            border-left: 1px solid #b0b0b0;
+        }
+
+        .b-foot-right {
+            border-right: 1px solid #b0b0b0;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .word-break {
+            word-break: break-all;
+        }
+
+        .valign-top {
+            vertical-align: top;
+        }
+
+        .valign-middle {
+            vertical-align: middle;
+        }
+
+        .valign-bottom {
+            vertical-align: bottom;
+        }
+
+        .qr {
+            width: 100%;
+        }
+
+        .bar {
+            background: #b0b0b0;
+        }
+
+        .Firma {
+            width: 125px;
+            height: 95px;
+        }
+    </style>
+    <script>
+        function GetURLParameter(sParam) {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam) {
+                    return sParameterName[1];
+                }
+            }
+        }
+        function subst() {
+            var pag = document.getElementById("pag");
+            pag.textContent = GetURLParameter("page") || "1";
+            var topag = document.getElementById("topag");
+            topag.textContent = GetURLParameter("topage") || "1";
+        }
+    </script>
+</head>
+<body onload="subst()">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+                <th colspan="1" class="no-border"></th>
+            </tr>
+            <tr>
+                <th colspan="24" class="bar fs-2">&nbsp;</th>
+            </tr>
+            <tr>
+                <td colspan="4" rowspan="5" class="valign-top" style="padding-top: 4px;">
+                    <span><b>FECHA:</b>&nbsp;&nbsp;<b>@todayShortDate</b></span>
+                </td>
+                <td colspan="14" rowspan="3" class="b-foot-left b-foot-right word-break b-foot-bottom fs-8 valign-top">
+                </td>
+                <td colspan="6" rowspan="3" class="text-center valign-bottom">
+                    <b>AUTORIZADO POR: </b>
+                </td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+                <th colspan="13" rowspan="2" class="text-justify fs-8" style="padding-top: 5px;">
+                    <span class="fs-10 fw-lighter lh-1"><b>ESTA ORDEN DEBE SURTIRSE HASTA CINCO DIAS HABILES DESPUES DE SU EXPEDICION</b></span>
+                    <br />
+                    <span class="fs-10 fw-lighter lh-1"><b>PARA EL PAGO DE SU FACTURA SIRVASE ENVIAR LA ORIGINAL, ADJUNTANDO ESTA ORDEN</b></span>
+                </th>
+                <th colspan="1" class="text-center fs-8"></th>
+                <th colspan="6" class="text-center fs-8">
+                </th>
+            </tr>
+            <tr class="no-border">
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>

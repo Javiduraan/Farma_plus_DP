@@ -1,0 +1,101 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Irving Hinojos Salazar" />
+@*    <script type="text/javascript">
+        const urlapplication = "@VirtualPathUtility.ToAbsolute("~/")";
+    </script>*@
+    <link rel="apple-touch-icon" sizes="76x76" href="~/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/img/favicon.png">
+    <title>Inicio de Sesión</title>
+    <link href="~/css/fonts.css" rel="stylesheet" />
+    <link href="~/libs/font awesome/all.min.css" rel="stylesheet" />
+    <link href="~/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="~/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="~/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/Tema.css" rel="stylesheet" />
+    <link href="~/css/Site.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-200">
+    <div id="loading">
+        <div id="loading-center">
+            <div class="loader">
+                <img src="~/img/seaasplus.png" class="loader-img" alt="" />
+            </div>
+        </div>
+    </div>
+    <main class="main-content  mt-0">
+        <div class="page-header align-items-start min-vh-100">
+            <span class="mask bg-gradient-dark opacity-6"></span>
+            <div class="container my-auto">
+                <div class="row">
+                    <div class="col-lg-4 col-md-8 col-12 mx-auto">
+                        <div class="card z-index-0 fadeIn3 fadeInBottom">
+                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                <div class="bg-gradient-salud shadow-salud border-radius-lg py-3 pe-1">
+                                    <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
+                                        Farma+<br />
+                                        Iniciar Sesión
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="input-group input-group-outline my-3">
+                                        @Html.LabelFor(m => m.Usuario, new { @class = "form-label" })
+                                        @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Usuario, null, new { @class = "invalid-feedback" }, "div")
+                                    </div>
+                                    <div class="input-group input-group-outline my-3">
+                                        @Html.LabelFor(m => m.Contraseña, new { @class = "form-label" })
+                                        @Html.PasswordFor(m => m.Contraseña, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Contraseña, null, new { @class = "invalid-feedback" }, "div")
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Entrar</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer position-absolute bottom-2 py-2 w-100">
+                <div class="container">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col-12 my-auto">
+                            <div class="copyright text-center text-sm text-white text-lg-start">
+                                &copy; @(DateTime.Now.Year == 2023 ? "2023" : ("2023-" + DateTime.Now.Year)) SEAAS+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+    <script src="~/libs/jquery/jquery.min.js"></script>
+    <script src="~/libs/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="~/libs/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/libs/jquery-validate/additional-methods.min.js"></script>
+    <script src="~/libs/jquery-validate/localization/messages_es.min.js"></script>
+    <script src="~/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/libs/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/libs/smooth-scrollbar/smooth-scrollbar.min.js"></script>
+    <script src="~/libs/dragula/dragula.min.js"></script>
+    <script src="~/libs/jkanban/dist/jkanban.min.js"></script>
+    <script src="~/Scripts/Tema.js"></script>
+    <script src="~/Scripts/Global.js"></script>
+    @*<script src="~/Scripts/Views/Home/Index.js"></script>*@
+</body>
+</html>

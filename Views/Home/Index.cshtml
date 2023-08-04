@@ -1,0 +1,552 @@
+﻿@{
+    //variable definida para controlar las versiones de los JS solo para las pruebas
+    //una vez en produccion manejar version por archivo
+    DateTime utcNow = DateTime.UtcNow;
+    var version = utcNow;
+}
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IReadOnlyList<Farma_plus.Models.Tratamiento>
+
+@{
+    ViewData["Title"] = "Farmacia";
+}
+@section css{
+    @*<link href="~/libs/jstree/themes/default/style.min.css" rel="stylesheet" />
+    <link href="~/libs/jqueryui/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/libs/select2/css/select2.min.css" rel="stylesheet" />
+    <link href="~/libs/select2/css/select2-bootstrap-5-theme.min.css" rel="stylesheet" />*@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+
+}
+<style>
+    table.display {
+        table-layout: fixed;
+    }
+
+    .swal-wide {
+        height: 370px !important;
+        width: 800px !important;
+        height: auto !important;
+    }
+
+    .ui-autocomplete {
+        position: relative;
+        z-index: 2147483647 !important;
+        background: #dddcdc;
+        cursor: default;
+        border: 2px solid #ccc;
+        padding: 5px 0;
+        border-radius: 2px;
+        max-height: 350px;
+        width: 300px;
+        /* prevent horizontal scrollbar */
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+</style>
+
+
+<div class="card">
+
+    <div class="card">
+        <div class="h4 text-center">
+            Farmacia
+        </div>
+    </div>
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="col-md-3">
+                <button id="btnAgregaMedicamento" type="button" class="btn bg-gradient-success" onclick="limpiaModalMedicamento()">Agregar Medicamento</button>
+            </div>
+
+
+            <form id="frmMedica">
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">Folio Receta</label>
+                        <input type="text" id="folio" onchange="cargaTablaMedicamentos()" onKeypress="return handleEnter(this,event,'V');" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">No. Pensiones</label>
+                        <input id="noPens" onchange="cargaTablaMedicamentos()" onKeypress="return handleEnter(this,event,'V');" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Parentesco</label>
+                        <input id="parentesco" onchange="cargaTablaMedicamentos()" onKeypress="return handleEnter(this,event,'V');" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="trMedicamentos" class="table dataTable no-footer dtr-inline table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Clave<br>Medicamento
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Descripción
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Cantidad<br>Surtida
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Vale<br>Subrogado
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            <button id="btnGuardaMedica" type="button" class="btn btn-lg btn-primary" onclick="guardaSurtido()">Surtir</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal para buscar los Medicamentos -->
+<div class="modal fade" id="AgregaMedicamento" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="buscarMedicamentoTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title font-weight-normal">Medicamentos</h6>
+                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form autocomplete="off">
+                    <div class="input-group input-group-dynamic mb-4">
+                        <span class="input-group-text material-icons" id="basic-addon3">search</span>
+                        <input id="buscaMedicamento" type="text" onKeypress="return handleEnter(this,event,'');" oninput="handleInputUpperText(event)" class="form-control">
+                        <input type="hidden" id="medicamento" />
+                        <input type="hidden" id="medicamento2" />
+                    </div>
+
+
+                    <br />
+                    <div class="row">
+                        <button type="button" id="btnAgregarMed" onclick="guardaMedicamento()" class="btn bg-gradient-info">Agregar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="mdlImprimir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="mdlImprimirLbl" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <embed src="" type="application/pdf" width="100%" height="100%">
+            </div>
+            <div class="modal-footer p-1">
+                <button type="button" class="btn btn-lg btn-danger m-1" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $("#AgregaMedicamento").on('shown.bs.modal', function () {
+            $('#buscaMedicamento').focus();
+        });
+
+
+        $("#buscaMedicamento").autocomplete({
+            minLength: 3,
+            source: function (request, response) {
+
+                $.ajax({
+                    url: '/Home/BuscaMedicamento',
+                    type: "POST",
+                    dataType: "json",
+                    data: { "vMedicamento": request.term },
+                    success: function (data) {
+                        if (data == null) {
+                            return;
+                        };
+
+                        response($.map(data, function (item) {
+                            return {
+                                id: item.clave,
+                                descrip: item.nombre,
+                            };
+                        }))
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    },
+                    failure: function (response) {
+                        console.log(response.responseText);
+                    }
+                });
+            },
+            select: function (e, i) {
+                e.preventDefault();
+                //cantidad, medida, viaAdmon, cada, frecuencia, duraciondias
+                $("#buscaMedicamento").val(i.item.descrip);
+                $("#medicamento").val(i.item.id);
+            }
+        }).autocomplete("instance")._renderItem = function (ul, item) {
+            return $("<li class='each'>")
+                .append("<div class='acItem'><span class='name'>" +
+                    "</span><span class='desc'>" + item.descrip + "</span></div>")
+                .appendTo(ul);
+        };
+
+
+        function cargaTablaMedicamentos() {
+
+            //se llena la tabla con los medicamentos
+            $("#trMedicamentos tbody tr").remove();
+            var i = 0;
+            var noPensiones = $('#noPens').val();
+            var parentesco = $('#parentesco').val();
+            var folioReceta = $('#folio').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/Home/BuscaRecetaPaciente',
+                data: {
+                    "numeroPensiones": noPensiones,
+                    "parentesco": parentesco,
+                    "folioReceta": folioReceta
+                },
+                success: function (data) {
+                    if (data != null) {
+                        data.forEach(function (datos) {
+
+                            var body = $("tbody", '#trMedicamentos')[0];
+                            var row = body.insertRow(); // Ingresa nueva fila
+                            row.setAttribute("id", "row_" + datos.claveMedicamento, 0);
+
+                            lcve = datos.claveMedicamento;
+                            lnombre = datos.descArticulo;
+                            ldosis = datos.dosis + " Cada " + datos.frecuencia + " " + datos.tipoFrecuencia;
+                            lvale = datos.valeSubrogado;
+
+                            ldato = "'" + lcve + "','" + i + "'";
+                            var cve = row.insertCell();
+                            cve.innerHTML = '<td>' +
+                                '<p id="cvemed_' + i + '" class="text-xs font-weight-normal mb-0"> ' + lcve + '</p>'
+                                + '</td>';
+                            var medicamento = row.insertCell();
+                            medicamento.innerHTML = '<td>' +
+                                '<p id="desc_' + i + '" class="text-xs font-weight-normal mb-0"> ' + lnombre + '</p><br>' +
+                                '<p id="desc_' + i + '" class="text-xs font-weight-normal mb-0">' + ldosis + '</p>'
+                                + '</td>';
+                            var cantidad = row.insertCell();
+                            cantidad.innerHTML = '<td>' +
+                                '<input id="cant_' + i + '" class="text-xs font-weight-normal mb-0 can"> </input>'
+                                + '</td>';
+                            var vale = row.insertCell();
+                            vale.innerHTML = '<td>' +
+                                '<div class="form-check form-switch"><input type="hidden" id="farma_' + i + '"></input>'
+                                + '<input id="subrogado_' + i + '" class="form-check-input cb" type="checkbox" onchange="valeSubrogado(' + ldato + ')" data-cvemed="' + lcve + '">'
+                            '</div> </td>';
+                            i++;
+                        });
+                    }
+                }
+            });
+
+        }
+
+
+
+
+        //funcion para al momento de hacer enter se vaya al siguiente campo encontrado y no este deshabilitado
+        function handleEnter(field, event, valida) {
+            var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                var i;
+                for (i = 0; i < field.form.elements.length; i++)
+                    if (field == field.form.elements[i])
+                        break;
+                i = (i + 1) % field.form.elements.length;
+                field.form.elements[i].focus();
+                //si se detecta un campo disabled se debe mandar al siguiente focus
+                //console.log("campo", field.form.elements[i]);
+                if (field.form.elements[i].disabled) {
+                    handleEnter(field.form.elements[i], event, '')
+                }
+                return false;
+            } else {
+                if (valida == 'V') {
+                    if (keyCode == 8) { // backspace.
+                        return true;
+                    } else if (keyCode >= 45 && keyCode <= 57) { // is a number.
+                        return true;
+                    } else { // other keys.
+                        return false;
+                    }
+                } else {
+                    return true;
+                }
+            }
+        }
+
+
+
+
+        function handleInputUpperText(e) {
+            var ss = e.target.selectionStart;
+            var se = e.target.selectionEnd;
+            e.target.value = e.target.value.toUpperCase();
+            e.target.selectionStart = ss;
+            e.target.selectionEnd = se;
+        }
+
+
+        function guardaSurtido() {
+
+            var folio = $("#folio").val();
+            var pensiones = $("#noPens").val();
+            var parentesco = $("#parentesco").val();
+
+            var listaElementos = [];
+            var table = document.getElementById("trMedicamentos");
+            var valeSubrog = "";
+            for (var r = 0, n = (table.rows.length) - 1; r < n; r++) {
+                subrogado = document.getElementById('subrogado_' + r).checked;
+                console.log(subrogado);
+                if (subrogado == true) {
+                    valeSubrog = 'S';
+                }
+                else {
+                    valeSubrog = 'N';
+                }
+                medicamento = document.getElementById("cvemed_" + r).innerHTML;
+                cantidad = parseInt(document.getElementById("cant_" + r).value);
+                descrip = document.getElementById("desc_" + r).innerHTML;
+                farmacia = document.getElementById("farma_" + r).innerHTML;
+
+                if (cantidad > 0) {
+                    listaElementos.push({
+                        "FolioReceta": parseInt(folio),
+                        "NumPensiones": parseInt(pensiones),
+                        "Parentesco": parseInt(parentesco),
+                        "Nombre": "",
+                        "DescArticulo": descrip.toString(),
+                        "Dosis": "",
+                        "DesDosis": "",
+                        "Frecuencia": 0,
+                        "TipoFrecuencia": "",
+                        "Dias": "",
+                        "FechaHoraSurtido": "",
+                        "ClaveMedicamento": medicamento.toString(),
+                        "CantSurtida": cantidad,
+                        "ValeSubrogado": valeSubrog,
+                        "NombreFarmacia": "",
+                        "NumFarmaciaSubrogado": parseInt(farmacia),
+                        "NuevoResurtido": ""
+                    });
+                }
+            }
+            console.log(listaElementos);
+
+            // Realizar una solicitud AJAX a la URL del endpoint en el controlador
+            $.ajax({
+                type: "POST",
+                url: "/Home/GuardaSurtidoRecetaAlterna",
+                contentType: "application/json",
+                data: JSON.stringify(listaElementos),
+                success: function (data) {
+
+                    var urls = "/Home/CreatePdf?folioReceta=" + folio;
+                    $("embed", "#mdlImprimir").attr("src", urls);
+                    $("#mdlImprimir").modal("show");
+
+                    console.log("Éxito al enviar la lista de elementos.");
+                },
+                error: function (error) {
+                    // Aquí puedes manejar los errores si ocurren
+                    console.error("Error al enviar la lista de elementos:", error);
+                }
+            });
+
+
+        }
+
+
+        function valeSubrogado(medicamento, row) {
+
+            var check = document.getElementById('subrogado_' + row).checked;
+
+            if (check) {
+                $("#farmacia").empty();
+                var options = '<option value="">Seleccione</option>';
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/buscaFarmacias',
+                    data: { "vMedicamento": medicamento },
+                    async: false,
+                    dataType: "json",
+                    success: function (data) {
+
+                        if (data.length > 0) {
+                            data.forEach(function (datos) {
+                                //se llena la lista
+                                options = options + '<option value="' + datos.clave + '" > ' + datos.nombre + '</option>';
+                            });
+
+                            Swal.fire({
+                                title: '',
+                                heightAuto: false,
+                                html: `
+                                                <div class="row m-0">
+                                                <div class="col-md-12">
+                                                    <div class="input-group input-group-static mb-4">
+                                                        <label class="form-label">Seleccione Farmacia</label>
+                                                    </div>
+                                                    <div class="input-group input-group-dynamic">
+                                                        <select class="form-control" id="farmacia"></select>
+                                                    </div>
+                                                </div>
+                                                </div>`,
+                                confirmButtonText: 'Agregar',
+                                showCancelButton: true,
+                                cancelButtonText: "Cancelar",
+                                focusConfirm: false,
+                                customClass: 'swal-wide',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                preConfirm: () => {
+
+                                    const farmacia = Swal.getPopup().querySelector('#farmacia').value;
+
+                                    if (farmacia == "" || !farmacia) {
+                                        Swal.showValidationMessage(`Debe Seleccionar una Opción de Farmacia`)
+                                    }
+
+
+                                    return { farmacia: farmacia }
+
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $("#farma_" + row).val(result.value.farmacia);
+                                } else {
+                                    document.getElementById('subrogado_' + row).checked = false;
+                                }
+                            });
+
+
+
+                        } else {
+                            WarningToast("Alerta", "No se encuentran Farmacias para este Medicamento", 4000, true);
+                            document.getElementById('subrogado_' + row).checked = false;
+                        }
+                    }
+                });
+                //se hace un append al dropdown
+                $("#farmacia").append(options);
+            } else {
+                $("#farma_" + row).val('');
+            }
+        }
+
+
+
+
+        function limpiaModalMedicamento() {
+
+            $('#buscaMedicamento').val("");
+            $('#medicamento').val("");
+            $('#medicamento2').val("");
+
+            $('#btnModificarMed').hide();
+            $('#btnAgregarMed').prop('disabled', false);
+            $('#btnAgregarMed').show();
+            $("#AgregaMedicamento").modal("show");
+        }
+
+
+        function guardaMedicamento() {
+            activaSpinnerBoton();
+            var medicamento = $("#medicamento").val();
+            var descripcion = $("#buscaMedicamento").val();
+
+            if (medicamento == "" && medicamento.length == 0) {
+                //swal("", "Debe Seleccionar un Medicamento", "error");
+                DesactivaSpinnerBoton();
+                WarningToast("Alerta", "Debe Seleccionar un Medicamento", 4000, true);
+                $("#buscaMedicamento").focus();
+                return;
+            }
+
+            //valida que el medicamento no se encuentre ya capturado en la tabla
+            if ($("#row_" + medicamento).length > 0) {
+                DesactivaSpinnerBoton('btnAgregarMed');
+                WarningToast("Alerta", "Este Medicamento ya se encuentra capturado.\nFavor de verificar", 4000, true);
+                return;
+            }
+
+            var i = ($("#trMedicamentos")[0].rows.length) - 1;
+
+            var body = $("tbody", '#trMedicamentos')[0];
+            var row = body.insertRow(); // Ingresa nueva fila
+            row.setAttribute("id", "row_" + medicamento, 0);
+            ldato = "'" + medicamento + "','" + i + "'";
+            lnombre = descripcion;
+
+            var cve = row.insertCell();
+            cve.innerHTML = '<td>' +
+                '<p id="cvemed_' + i + '" class="text-xs font-weight-normal mb-0"> ' + medicamento + '</p>'
+                + '</td>';
+            var medicamento = row.insertCell();
+            medicamento.innerHTML = '<td>' +
+                '<p id="desc_' + i + '" class="text-xs font-weight-normal mb-0"> ' + descripcion + '</p>'
+                + '</td>';
+            var cantidad = row.insertCell();
+            cantidad.innerHTML = '<td>' +
+                '<input id="cant_' + i + '"  class="text-xs font-weight-normal mb-0 can"> </input>'
+                + '</td>';
+            var vale = row.insertCell();
+            vale.innerHTML = '<td>' +
+                '<div class="form-check form-switch"><input type="hidden" id="farma_' + i + '"></input>'
+                + '<input id="subrogado_' + i + '" class="form-check-input cb" type="checkbox" onchange="valeSubrogado(' + ldato + ')" data-cvemed="' + medicamento + '">'
+            '</div> </td>';
+            i++;
+            DesactivaSpinnerBoton();
+            $("#AgregaMedicamento").modal("hide");
+        }
+
+
+
+        function DesactivaSpinnerBoton() {
+            $("#btnAgregarMed").html("Agregar");
+            $("#btnAgregarMed").prop("disabled", false);
+        }
+
+
+        function activaSpinnerBoton() {
+            $("#btnAgregarMed").prop("disabled", true);
+            $("#btnAgregarMed").html(
+                `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Agregando...`
+            );
+        }
+
+    </script>
+
+
+}
+
+

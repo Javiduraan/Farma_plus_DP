@@ -1,0 +1,375 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+
+@model IGrouping<string, Farma_plus.Models.ValeSubrogadoDto>
+@{
+    Layout = null;
+    ViewBag.Title = "Vale Subrogacion";
+    var url = string.Format("{0}://{1}{2}", Context.Request.Scheme, Url.ActionContext.HttpContext.Request.Host.Value, Url.Content("~"));
+    var nr = 1;
+}
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="@(url)/img/favicon.png">
+    <style>
+        html {
+            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 1px;
+            line-height: 1.5;
+            color: #000000;
+            min-width: 1020px;
+            width: 1020px;
+            max-width: 1020px;
+            /*min-height: 929px;*/
+        }
+
+        body {
+            min-width: 1020px;
+            width: 1020px;
+            max-width: 1020px;
+            /*min-height: 929px;*/
+            padding: 0;
+            margin: 0;
+            /*font-size: 14.66rem;*/
+            font-size: 13rem;
+            font-weight: 400;
+        }
+
+        table {
+            table-layout: fixed;
+            margin-top: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+            border-spacing: 0;
+            /*border-collapse: collapse;*/
+            text-align: left;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        tr {
+            page-break-inside: avoid;
+        }
+
+        td, th {
+            border-spacing: 0;
+            /*border-collapse: collapse;*/
+        }
+
+        table td, table th {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        table table td, table table th {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        th[colspan="1"], td[colspan="1"] {
+            width: calc(100% / 24) !important;
+        }
+
+        th[colspan="2"], td[colspan="2"] {
+            width: calc(100% / 24 * 2) !important;
+        }
+
+        th[colspan="3"], td[colspan="3"] {
+            width: calc(100% / 24 * 3) !important;
+        }
+
+        th[colspan="4"], td[colspan="4"] {
+            width: calc(100% / 24 * 4) !important;
+        }
+
+        th[colspan="5"], td[colspan="5"] {
+            width: calc(100% / 24 * 5) !important;
+        }
+
+        th[colspan="6"], td[colspan="6"] {
+            width: calc(100% / 24 * 6) !important;
+        }
+
+        th[colspan="7"], td[colspan="7"] {
+            width: calc(100% / 24 * 7) !important;
+        }
+
+        th[colspan="8"], td[colspan="8"] {
+            width: calc(100% / 24 * 8) !important;
+        }
+
+        th[colspan="9"], td[colspan="9"] {
+            width: calc(100% / 24 * 9) !important;
+        }
+
+        th[colspan="10"], td[colspan="10"] {
+            width: calc(100% / 24 * 10) !important;
+        }
+
+        th[colspan="11"], td[colspan="11"] {
+            width: calc(100% / 24 * 11) !important;
+        }
+
+        th[colspan="12"], td[colspan="12"] {
+            width: calc(100% / 24 * 12) !important;
+        }
+
+        th[colspan="13"], td[colspan="13"] {
+            width: calc(100% / 24 * 13) !important;
+        }
+
+        th[colspan="14"], td[colspan="14"] {
+            width: calc(100% / 24 * 14) !important;
+        }
+
+        th[colspan="15"], td[colspan="15"] {
+            width: calc(100% / 24 * 15) !important;
+        }
+
+        th[colspan="16"], td[colspan="16"] {
+            width: calc(100% / 24 * 16) !important;
+        }
+
+        th[colspan="17"], td[colspan="17"] {
+            width: calc(100% / 24 * 17) !important;
+        }
+
+        th[colspan="18"], td[colspan="18"] {
+            width: calc(100% / 24 * 18) !important;
+        }
+
+        th[colspan="19"], td[colspan="19"] {
+            width: calc(100% / 24 * 19) !important;
+        }
+
+        th[colspan="20"], td[colspan="20"] {
+            width: calc(100% / 24 * 20) !important;
+        }
+
+        th[colspan="21"], td[colspan="21"] {
+            width: calc(100% / 24 * 21) !important;
+        }
+
+        th[colspan="22"], td[colspan="22"] {
+            width: calc(100% / 24 * 22) !important;
+        }
+
+        th[colspan="23"], td[colspan="23"] {
+            width: calc(100% / 24 * 23) !important;
+        }
+
+        th[colspan="24"], td[colspan="24"] {
+            width: 100% !important;
+        }
+
+        .text-left {
+            text-align: left !important;
+        }
+
+        .text-right {
+            text-align: right !important;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .text-justify {
+            text-align: justify !important;
+        }
+
+        tbody * {
+            vertical-align: top;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .fs-1 {
+            font-size: 1rem;
+        }
+
+        .fs-2 {
+            font-size: 3rem;
+        }
+
+        .fs-3 {
+            font-size: 4rem;
+        }
+
+        .fs-4 {
+            font-size: 5rem;
+        }
+
+        .fs-5 {
+            font-size: 7rem;
+        }
+
+        .fs-6 {
+            font-size: 8rem;
+        }
+
+        .fs-7 {
+            font-size: 9rem;
+        }
+
+        .fs-8 {
+            font-size: 11rem;
+        }
+
+        .fs-9 {
+            font-size: 12rem;
+        }
+
+        .fs-10 {
+            font-size: 13rem;
+        }
+
+        .fs-11 {
+            font-size: 15rem;
+        }
+
+        .fs-12 {
+            font-size: 16rem;
+        }
+
+        .fs-20 {
+            font-size: 27rem;
+        }
+
+        .fw-lighter {
+            font-weight: lighter;
+        }
+
+        .lh-1 {
+            line-height: 1;
+        }
+
+        .datos {
+            background-color: #ebebeb;
+        }
+
+        .Mdatos {
+            background-color: #b2b2b2;
+            background-size: contain;
+        }
+
+        .b-top, .b-top-left, .b-top-right, .b-top-bottom {
+            border-spacing: 0;
+            border-top: 2px solid #b0b0b0;
+        }
+
+        .b-left, .b-top-left, .b-bottom-left {
+            border-spacing: 0;
+            border-left: 2px solid #b0b0b0;
+        }
+
+        .b-right, .b-top-right, .b-bottom-right {
+            border-spacing: 0;
+            border-right: 2px solid #b0b0b0;
+        }
+
+        .b-bottom, .b-bottom-left, .b-bottom-right, .b-top-bottom {
+            border-spacing: 0;
+            border-bottom: 2px solid #b0b0b0;
+        }
+
+        .border {
+            border: 2px solid #b0b0b0 !important;
+        }
+
+        .no-border {
+            border: none !important;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .word-break {
+            word-break: break-all;
+        }
+
+        .ww-jump {
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .valign-top {
+            vertical-align: top;
+        }
+
+        .valign-middle {
+            vertical-align: middle;
+        }
+
+        .valign-bottom {
+            vertical-align: bottom;
+        }
+
+        table + table {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                    <th colspan="1" class="no-border"></th>
+                </tr>
+                <tr class="datos">
+                    <th colspan="24" class="text-left">DATOS DEL MEDICAMENTO</th>
+                </tr>
+                <tr>
+                    <td colspan="2" class="fs-8 text-center b-bottom">CLAVE</td>
+                    <td colspan="2" class="fs-8 text-center b-bottom">CANTIDAD</td>
+                    <td colspan="4" class="fs-8 text-center b-bottom">NOMBRE COMERCIAL</td>
+                    <td colspan="4" class="fs-8 text-center b-bottom">FUERZA</td>
+                    <td colspan="12" class="fs-8 text-left b-bottom-right">P R E S E N T A C I O N</td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td colspan="2" class="fs-10 text-left">@item.ClaveMedicamento</td>
+                        <td colspan="2" class="fs-10 text-left ">@item.Cantidad</td>
+                        <td colspan="10" class="fs-10 text-left ">@item.DescArticulo</td>
+                        <td colspan="4" class="fs-10 text-left "></td>
+                        <td colspan="4" class="fs-10 text-left "></td>
+                    </tr>
+                }
+
+</body>
+</html>

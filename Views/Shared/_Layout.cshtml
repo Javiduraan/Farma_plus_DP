@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Irving Hinojos Salazar" />
+    @*	<script type="text/javascript">
+            const urlapplication = "@VirtualPathUtility.ToAbsolute("~/")";
+        </script>*@
+    <link rel="apple-touch-icon" sizes="76x76" href="~/img/PCE.png">
+    <link rel="icon" type="image/png" href="~/img/PCE.png">
+    <title>@ViewBag.Title - SEAAS+</title>
+    <link href="~/css/fonts.css" rel="stylesheet" />
+    <link href="~/libs/webfont-medical-icons/css/wfmi-style.css" rel="stylesheet" />
+    <link href="~/libs/font awesome/all.min.css" rel="stylesheet" />
+    <link href="~/libs/datatables.net/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="~/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="~/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/libs/datatables.net/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="~/libs/datatables.net/responsive.bootstrap5.min.css" rel="stylesheet" />
+    @RenderSection("css", required: false)
+    <link href="~/css/Tema.css" rel="stylesheet" />
+    <link href="~/css/Site.css" rel="stylesheet" />
+    @RenderSection("custom", required: false)
+
+</head>
+<body class="g-sidenav-show g-sidenav-hidden">
+    <div id="loading">
+        <div id="loading-center">
+            <div class="loader">
+                <img src="~/img/seaasplus.png" class="loader-img" alt="" />
+            </div>
+        </div>
+    </div>
+    <main id="DatosDr" role="main" class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
+        <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 border-radius-xl z-index-sticky shadow-none" id="navbarBlur" data-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <div class="">
+                    @*<b>Dr.: @user.NOMBRE - (@user.ESPECIALIDADES.Where(x => x.CVE_ESPECIALIDAD == @user.ESP_SELECCIONADA).FirstOrDefault().DESCRIPCION ) - U.M.</b>*@
+                </div>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    </div>
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a href="javascript:;" class="nav-link p-0 text-body">
+                                <i class="material-icons fixed-plugin-button-nav cursor-pointer">
+                                    account_circle
+                                </i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid py-4">
+            @RenderBody()
+        </div>
+    </main>
+    <div class="position-fixed top-0 end-0 py-3 ps-3 pe-1 p-sm-3" id="Toasts">
+        <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-transparent border-0">
+                <i class="material-icons me-2">notifications</i>
+                <span class="toast-title me-auto font-weight-bold">Notificación</span>
+                <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Cerrar"></i>
+            </div>
+            <hr class="horizontal m-0">
+            <div class="toast-body"></div>
+        </div>
+    </div>
+    <script src="~/libs/jquery/jquery.min.js"></script>
+    <script src="~/libs/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="~/libs/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/libs/jquery-validate/additional-methods.min.js"></script>
+    <script src="~/libs/jquery-validate/localization/messages_es.min.js"></script>
+    <script src="~/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/libs/moment.js/moment-with-locales.min.js"></script>
+    <script src="~/libs/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/libs/smooth-scrollbar/smooth-scrollbar.min.js"></script>
+    <script src="~/libs/dragula/dragula.min.js"></script>
+    <script src="~/libs/jkanban/dist/jkanban.min.js"></script>
+    <script src="~/libs/sweetalert/sweetalert.min.js"></script>
+    <script src="~/libs/datatables.net/jquery.dataTables.min.js"></script>
+    <script src="~/libs/datatables.net/dataTables.bootstrap5.min.js"></script>
+    <script src="~/libs/datatables.net/dataTables.responsive.min.js"></script>
+    <script src="~/libs/datatables.net/responsive.bootstrap5.min.js"></script>
+    <script src="~/libs/Chart.js/chart.umd.min.js"></script>
+    <script src="~/libs/jstree/jstree.min.js"></script>
+    <script src="~/libs/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/libs/jquery.mask/jquery.mask.min.js"></script>
+    <script src="~/libs/moment.js/moment-with-locales.min.js"></script>
+    <script src="~/libs/select2/js/select2.full.min.js"></script>
+    <script src="~/libs/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+    @RenderSection("Libs", required: false)
+    <script src="~/Scripts/Tema.js"></script>
+    <script src="~/Scripts/Global.js"></script>
+    @*<script src="~/Scripts/Views/Estadisticas.js"></script>*@
+    @RenderSection("Scripts", required: false)
+    <script>
+		$(window).on("load", () => {
+		@if (TempData["Success"] != null)
+		{
+			<text>
+					SuccessToast(null, "@TempData["Success"]");
+			</text>
+		}
+		@if (TempData["Error"] != null)
+		{
+			<text>
+					DangerToast(null, "@TempData["Error"]");
+			</text>
+		}
+		@if (TempData["Warning"] != null)
+		{
+			<text>
+					WarningToast(null, "@TempData["Warning"]");
+			</text>
+		}
+		@if (TempData["Info"] != null)
+		{
+			<text>
+					InfoToast(null, "@TempData["Info"]");
+			</text>
+		}
+				});
+    </script>
+</body>
+</html>

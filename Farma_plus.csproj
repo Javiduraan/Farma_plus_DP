@@ -1,0 +1,276 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>8b3a2910-b8e0-4b60-9fa6-376b46860c85</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\site.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.143" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.22" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="3.1.32" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.32" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.32" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.110" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Reports\" />
+    <Folder Include="wwwroot\Scripts\" />
+    <Folder Include="Rotativa\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\fonts.css" />
+    <None Include="wwwroot\css\nucleo-icons.css" />
+    <None Include="wwwroot\css\nucleo-svg.css" />
+    <None Include="wwwroot\css\site.css" />
+    <None Include="wwwroot\css\Tema.css" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-brands-400.ttf" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-brands-400.woff2" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-duotone-900.ttf" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-duotone-900.woff2" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-light-300.ttf" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-light-300.woff2" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-regular-400.ttf" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-regular-400.woff2" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-solid-900.ttf" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-solid-900.woff2" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-thin-100.ttf" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-thin-100.woff2" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-v4compatibility.ttf" />
+    <None Include="wwwroot\fonts\Font Awesome\fa-v4compatibility.woff2" />
+    <None Include="wwwroot\fonts\LibreBarcode128\LibreBarcode128-Regular.eot" />
+    <None Include="wwwroot\fonts\LibreBarcode128\LibreBarcode128-Regular.svg" />
+    <None Include="wwwroot\fonts\LibreBarcode128\LibreBarcode128-Regular.ttf" />
+    <None Include="wwwroot\fonts\LibreBarcode128\LibreBarcode128-Regular.woff" />
+    <None Include="wwwroot\fonts\LibreBarcode128\LibreBarcode128-Regular.woff2" />
+    <None Include="wwwroot\fonts\MaterialIconsRound\MaterialIconsRound-Regular.eot" />
+    <None Include="wwwroot\fonts\MaterialIconsRound\MaterialIconsRound-Regular.svg" />
+    <None Include="wwwroot\fonts\MaterialIconsRound\MaterialIconsRound-Regular.ttf" />
+    <None Include="wwwroot\fonts\MaterialIconsRound\MaterialIconsRound-Regular.woff" />
+    <None Include="wwwroot\fonts\MaterialIconsRound\MaterialIconsRound-Regular.woff2" />
+    <None Include="wwwroot\fonts\nucleo-icons.eot" />
+    <None Include="wwwroot\fonts\nucleo-icons.svg" />
+    <None Include="wwwroot\fonts\nucleo-icons.ttf" />
+    <None Include="wwwroot\fonts\nucleo-icons.woff" />
+    <None Include="wwwroot\fonts\nucleo-icons.woff2" />
+    <None Include="wwwroot\fonts\nucleo.eot" />
+    <None Include="wwwroot\fonts\nucleo.ttf" />
+    <None Include="wwwroot\fonts\nucleo.woff" />
+    <None Include="wwwroot\fonts\nucleo.woff2" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Bold.eot" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Bold.svg" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Bold.ttf" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Bold.woff" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Bold.woff2" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Regular.eot" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Regular.svg" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Regular.ttf" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Regular.woff" />
+    <None Include="wwwroot\fonts\RobotoSlab\RobotoSlab-Regular.woff2" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Black.eot" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Black.svg" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Black.ttf" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Black.woff" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Black.woff2" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Bold.eot" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Bold.svg" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Bold.ttf" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Bold.woff" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Bold.woff2" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Light.eot" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Light.svg" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Light.ttf" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Light.woff" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Light.woff2" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Medium.eot" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Medium.svg" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Medium.ttf" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Medium.woff" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Medium.woff2" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Regular.eot" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Regular.svg" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Regular.ttf" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Regular.woff" />
+    <None Include="wwwroot\fonts\Roboto\Roboto-Regular.woff2" />
+    <None Include="wwwroot\img\apple-icon.png" />
+    <None Include="wwwroot\img\bg-pricing.jpg" />
+    <None Include="wwwroot\img\bg-pricinggg.jpg" />
+    <None Include="wwwroot\img\bg-smart-home-1.jpg" />
+    <None Include="wwwroot\img\bg-smart-home-2.jpg" />
+    <None Include="wwwroot\img\bruce-mars.jpg" />
+    <None Include="wwwroot\img\cargando.gif" />
+    <None Include="wwwroot\img\Corte Aqui.png" />
+    <None Include="wwwroot\img\down-arrow-dark.svg" />
+    <None Include="wwwroot\img\down-arrow-white.svg" />
+    <None Include="wwwroot\img\down-arrow.svg" />
+    <None Include="wwwroot\img\drake.jpg" />
+    <None Include="wwwroot\img\favicon.png" />
+    <None Include="wwwroot\img\fondo.png" />
+    <None Include="wwwroot\img\fondoN.jpeg" />
+    <None Include="wwwroot\img\fondoo.png" />
+    <None Include="wwwroot\img\home-decor-1.jpg" />
+    <None Include="wwwroot\img\home-decor-2.jpg" />
+    <None Include="wwwroot\img\home-decor-3.jpg" />
+    <None Include="wwwroot\img\icons\flags\AU.png" />
+    <None Include="wwwroot\img\icons\flags\BR.png" />
+    <None Include="wwwroot\img\icons\flags\DE.png" />
+    <None Include="wwwroot\img\icons\flags\GB.png" />
+    <None Include="wwwroot\img\icons\flags\US.png" />
+    <None Include="wwwroot\img\icons\tablas\remove.png" />
+    <None Include="wwwroot\img\icons\tabs\date.png" />
+    <None Include="wwwroot\img\icons\tabs\doctor.png" />
+    <None Include="wwwroot\img\icons\tabs\foto.png" />
+    <None Include="wwwroot\img\icons\tabs\laboratorio.png" />
+    <None Include="wwwroot\img\icons\tabs\medicina.png" />
+    <None Include="wwwroot\img\icons\tabs\paciente.png" />
+    <None Include="wwwroot\img\icons\tabs\radiologo.png" />
+    <None Include="wwwroot\img\icons\tabs\referencia.png" />
+    <None Include="wwwroot\img\icons\tabs\signos.png" />
+    <None Include="wwwroot\img\icons\tree\nivel1.png" />
+    <None Include="wwwroot\img\icons\tree\nivel2.png" />
+    <None Include="wwwroot\img\icons\tree\nivel3.png" />
+    <None Include="wwwroot\img\icons\tree\nivel4.png" />
+    <None Include="wwwroot\img\illustrations\chat.png" />
+    <None Include="wwwroot\img\illustrations\danger-chat-ill.png" />
+    <None Include="wwwroot\img\illustrations\dark-lock-ill.png" />
+    <None Include="wwwroot\img\illustrations\error-404.png" />
+    <None Include="wwwroot\img\illustrations\error-500.png" />
+    <None Include="wwwroot\img\illustrations\illustration-lock.jpg" />
+    <None Include="wwwroot\img\illustrations\illustration-reset.jpg" />
+    <None Include="wwwroot\img\illustrations\illustration-signin.jpg" />
+    <None Include="wwwroot\img\illustrations\illustration-signup.jpg" />
+    <None Include="wwwroot\img\illustrations\illustration-verification.jpg" />
+    <None Include="wwwroot\img\illustrations\lock.png" />
+    <None Include="wwwroot\img\illustrations\pattern-tree.svg" />
+    <None Include="wwwroot\img\illustrations\rocket-white.png" />
+    <None Include="wwwroot\img\ivana-square.jpg" />
+    <None Include="wwwroot\img\ivana-squares.jpg" />
+    <None Include="wwwroot\img\ivancik.jpg" />
+    <None Include="wwwroot\img\kal-visuals-square.jpg" />
+    <None Include="wwwroot\img\logo-ct-dark.png" />
+    <None Include="wwwroot\img\logo-ct.png" />
+    <None Include="wwwroot\img\logos\gray-logos\logo-coinbase.svg" />
+    <None Include="wwwroot\img\logos\gray-logos\logo-nasa.svg" />
+    <None Include="wwwroot\img\logos\gray-logos\logo-netflix.svg" />
+    <None Include="wwwroot\img\logos\gray-logos\logo-pinterest.svg" />
+    <None Include="wwwroot\img\logos\gray-logos\logo-spotify.svg" />
+    <None Include="wwwroot\img\logos\gray-logos\logo-vodafone.svg" />
+    <None Include="wwwroot\img\logos\mastercard.png" />
+    <None Include="wwwroot\img\logos\visa.png" />
+    <None Include="wwwroot\img\marie.jpg" />
+    <None Include="wwwroot\img\meeting.jpg" />
+    <None Include="wwwroot\img\notPhoto.png" />
+    <None Include="wwwroot\img\office-dark.jpg" />
+    <None Include="wwwroot\img\PCE firma.png" />
+    <None Include="wwwroot\img\PCE Gris.jpg" />
+    <None Include="wwwroot\img\PCE.old.png" />
+    <None Include="wwwroot\img\PCE.png" />
+    <None Include="wwwroot\img\product-12.jpg" />
+    <None Include="wwwroot\img\products\product-1-min.jpg" />
+    <None Include="wwwroot\img\products\product-11.jpg" />
+    <None Include="wwwroot\img\products\product-2-min.jpg" />
+    <None Include="wwwroot\img\products\product-3-min.jpg" />
+    <None Include="wwwroot\img\products\product-4-min.jpg" />
+    <None Include="wwwroot\img\products\product-5-min.jpg" />
+    <None Include="wwwroot\img\products\product-6-min.jpg" />
+    <None Include="wwwroot\img\products\product-7-min.jpg" />
+    <None Include="wwwroot\img\products\product-details-1.jpg" />
+    <None Include="wwwroot\img\products\product-details-2.jpg" />
+    <None Include="wwwroot\img\products\product-details-3.jpg" />
+    <None Include="wwwroot\img\products\product-details-4.jpg" />
+    <None Include="wwwroot\img\products\product-details-5.jpg" />
+    <None Include="wwwroot\img\seaasplus.old.png" />
+    <None Include="wwwroot\img\seaasplus.png" />
+    <None Include="wwwroot\img\SEAASplusMA.old.png" />
+    <None Include="wwwroot\img\SEAASplusMA.png" />
+    <None Include="wwwroot\img\shapes\pattern-lines.svg" />
+    <None Include="wwwroot\img\shapes\waves-white.svg" />
+    <None Include="wwwroot\img\small-logos\bootstrap.svg" />
+    <None Include="wwwroot\img\small-logos\creative-tim.svg" />
+    <None Include="wwwroot\img\small-logos\devto.svg" />
+    <None Include="wwwroot\img\small-logos\github.svg" />
+    <None Include="wwwroot\img\small-logos\google-webdev.svg" />
+    <None Include="wwwroot\img\small-logos\icon-bulb.svg" />
+    <None Include="wwwroot\img\small-logos\icon-sun-cloud.png" />
+    <None Include="wwwroot\img\small-logos\logo-asana.svg" />
+    <None Include="wwwroot\img\small-logos\logo-atlassian.svg" />
+    <None Include="wwwroot\img\small-logos\logo-invision.svg" />
+    <None Include="wwwroot\img\small-logos\logo-jira.svg" />
+    <None Include="wwwroot\img\small-logos\logo-slack.svg" />
+    <None Include="wwwroot\img\small-logos\logo-spotify.svg" />
+    <None Include="wwwroot\img\small-logos\logo-xd.svg" />
+    <None Include="wwwroot\img\team-1.jpg" />
+    <None Include="wwwroot\img\team-2.jpg" />
+    <None Include="wwwroot\img\team-3.jpg" />
+    <None Include="wwwroot\img\team-4.jpg" />
+    <None Include="wwwroot\img\team-5.jpg" />
+    <None Include="wwwroot\img\tesla-model-s.png" />
+    <None Include="wwwroot\img\vr-bg.jpg" />
+    <None Include="wwwroot\libs\bootstrap-datetimepicker\css\bootstrap-datetimepicker-standalone.min.css" />
+    <None Include="wwwroot\libs\bootstrap-datetimepicker\css\bootstrap-datetimepicker-standalone.min.css.map" />
+    <None Include="wwwroot\libs\bootstrap-datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\libs\bootstrap\css\bootstrap.min.css" />
+    <None Include="wwwroot\libs\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\libs\bootstrap\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\libs\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\libs\Chart.js\chart.umd.js.map" />
+    <None Include="wwwroot\libs\Chart.js\chart.umd.min.js" />
+    <None Include="wwwroot\libs\datatables.net\css\jquery.dataTables.min.css" />
+    <None Include="wwwroot\libs\datatables.net\dataTables.bootstrap5.min.css" />
+    <None Include="wwwroot\libs\datatables.net\dataTables.bootstrap5.min.js" />
+    <None Include="wwwroot\libs\datatables.net\dataTables.responsive.min.js" />
+    <None Include="wwwroot\libs\datatables.net\jquery.dataTables.min.js" />
+    <None Include="wwwroot\libs\datatables.net\responsive.bootstrap5.min.css" />
+    <None Include="wwwroot\libs\datatables.net\responsive.bootstrap5.min.js" />
+    <None Include="wwwroot\libs\datatables.net\responsive.dataTables.min.css" />
+    <None Include="wwwroot\libs\dragula\dragula.min.css" />
+    <None Include="wwwroot\libs\dragula\dragula.min.js" />
+    <None Include="wwwroot\libs\font awesome\all.min.css" />
+    <None Include="wwwroot\libs\jkanban\dist\jkanban.min.css" />
+    <None Include="wwwroot\libs\jkanban\dist\jkanban.min.js" />
+    <None Include="wwwroot\libs\jquery-migrate\jquery-migrate.min.js" />
+    <None Include="wwwroot\libs\jquery-migrate\jquery-migrate.min.map" />
+    <None Include="wwwroot\libs\jquery-validate\additional-methods.min.js" />
+    <None Include="wwwroot\libs\jquery-validate\jquery.validate.min.js" />
+    <None Include="wwwroot\libs\jquery-validate\localization\messages_es.min.js" />
+    <None Include="wwwroot\libs\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\libs\jquery.mask\jquery.mask.min.js" />
+    <None Include="wwwroot\libs\jqueryui\jquery-ui.min.js" />
+    <None Include="wwwroot\libs\jqueryui\themes\base\jquery-ui.min.css" />
+    <None Include="wwwroot\libs\jquery\jquery.min.js" />
+    <None Include="wwwroot\libs\jquery\jquery.min.map" />
+    <None Include="wwwroot\libs\jstree\jstree.min.js" />
+    <None Include="wwwroot\libs\jstree\themes\default\32px.png" />
+    <None Include="wwwroot\libs\jstree\themes\default\style.min.css" />
+    <None Include="wwwroot\libs\moment.js\moment-with-locales.min.js" />
+    <None Include="wwwroot\libs\moment.js\moment-with-locales.min.js.map" />
+    <None Include="wwwroot\libs\perfect-scrollbar\css\perfect-scrollbar.min.css" />
+    <None Include="wwwroot\libs\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <None Include="wwwroot\libs\select2\css\select2-bootstrap-5-theme.min.css" />
+    <None Include="wwwroot\libs\select2\css\select2.min.css" />
+    <None Include="wwwroot\libs\select2\js\i18n\es.min.js" />
+    <None Include="wwwroot\libs\select2\js\select2.full.min.js" />
+    <None Include="wwwroot\libs\simple-datatables\dist\style.min.css" />
+    <None Include="wwwroot\libs\simple-datatables\dist\umd\simple-datatables.min.js" />
+    <None Include="wwwroot\libs\smooth-scrollbar\smooth-scrollbar.min.js" />
+    <None Include="wwwroot\libs\sweetalert\sweetalert.min.js" />
+    <None Include="wwwroot\libs\webfont-medical-icons\css\wfmi-style.css" />
+    <None Include="wwwroot\libs\webfont-medical-icons\fonts\webfont-medical-icons.eot" />
+    <None Include="wwwroot\libs\webfont-medical-icons\fonts\webfont-medical-icons.svg" />
+    <None Include="wwwroot\libs\webfont-medical-icons\fonts\webfont-medical-icons.ttf" />
+    <None Include="wwwroot\libs\webfont-medical-icons\fonts\webfont-medical-icons.woff" />
+    <None Include="wwwroot\Scripts\Global.js" />
+    <None Include="wwwroot\Scripts\Tema.js" />
+  </ItemGroup>
+
+</Project>
